@@ -1,0 +1,20 @@
+.dashboard {
+  height: 20rem;
+}
+
+.svg-progress-bar {
+  display: block;
+  margin: auto;
+
+  font-size: 2rem;
+  font-weight: 900;
+}
+
+.progress-bar {
+  stroke: var(--secondary);
+  transform-origin: center;
+  transform: rotate(-90deg);
+  transition: stroke-dashoffset 0.3s;
+
+ 
+}
