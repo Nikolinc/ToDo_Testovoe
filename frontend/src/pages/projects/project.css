@@ -1,0 +1,32 @@
+.projects-page {
+  display: grid;
+  grid-template-columns: 30rem auto;
+}
+
+.leftArea>* {
+  width: 20rem;
+  margin: 2.5rem;
+  padding: 0.5rem 0;
+}
+
+#search {
+
+  width: 50%;
+  height: 2rem;
+  margin: 2.5rem;
+  margin-left: 10rem;
+  padding-left: 1rem;
+  background-color: var(--bg-component);
+  border: none;
+  border-radius: 15px;
+
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+[type="search"]::-webkit-search-cancel-button,
+[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
