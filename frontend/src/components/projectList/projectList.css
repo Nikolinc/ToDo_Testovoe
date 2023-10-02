@@ -1,0 +1,28 @@
+.projectList {
+  height: 100%;
+  width: 75rem;
+  padding-left: 5rem;
+  padding-right: 2rem;
+}
+
+
+.projectList>h3 {
+  padding: 3rem 0;
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+
+
+.project-item {
+  width: 10rem;
+  height: 13rem;
+}
+
+.project-item>img {
+  height: 6rem;
+  border-radius: 15px 15px 0 0;
+}
+
+.progress {
+  margin-top: 1rem;
+}
