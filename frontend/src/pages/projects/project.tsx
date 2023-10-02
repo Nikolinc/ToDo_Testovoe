@@ -10,6 +10,8 @@ export default function Project() {
   const [searchParams, setSearchParams] = useSearchParams({ q: "" });
   const q = searchParams.get("q") || "";
 
+
+
   return (
     <div className="projects-page">
       <div className="leftArea">
@@ -17,7 +19,7 @@ export default function Project() {
         <Dashboard />
         <NewProject />
       </div>
-      <div className="project">
+      <div className="project ">
         <input
           className="clearNone"
           type="search"
