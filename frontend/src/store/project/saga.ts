@@ -15,7 +15,6 @@ const getProject = async () => {
     method: "get",
     headers: {},
   });
-  console.log("project", answer);
   return answer;
 };
 
@@ -29,14 +28,14 @@ export const projectFailure = (payload: ProjectsFailurePayload): ProjectsFailure
   payload,
 });
 
-function* projectSaga(action: any) {
+function* projectSaga() {
   try {
-    const response: { projects: Project[] } = yield call(getProject);
-
+    const response:{projects:Project[]} = yield call(getProject);
+    console.log("response",response)
     yield put(
-      projectSuccess({
-        projects: response.projects,
-      })
+      projectSuccess(
+       response,
+      )
     );
   } catch (e: any) {
     yield put(projectFailure({ error: e.messag }));
