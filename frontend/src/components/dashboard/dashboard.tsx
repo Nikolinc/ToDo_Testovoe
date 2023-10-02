@@ -1,26 +1,27 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./dashboard.css";
 
 export default function Dashboard() {
-  const circle = useRef<SVGCircleElement>(null);
   const [progress, setProgress] = useState(75);
+  const circle = useRef<SVGCircleElement>(null);
 
-  const radius: number = circle.current?.r.baseVal.value || 0;
-  const circumference = 2 * Math.PI * radius;
 
-  if (circle.current) {
-    circle.current.style.strokeDasharray = `${circumference} ${circumference}`;
-    circle.current.style.strokeDashoffset = `${circumference}`;
-  }
+  useEffect(() => {
+    const radius: number = circle.current?.r.baseVal.value || 0;
 
-  useMemo(() => {
-      const offset = circumference - (progress / 100) * circumference;
+    const circumference = 2 * Math.PI * radius;
+
+    if (circle.current) {
+      circle.current.style.strokeDasharray = `${circumference} ${circumference}`;
+      circle.current.style.strokeDashoffset = `${circumference}`;
+    }
+    const offset = circumference - (progress / 100) * circumference;
     if (circle.current) {
       circle.current.style.strokeDashoffset = String(offset);
     }
 
     console.log("offset", offset);
-  }, [circumference, progress]);
+  }, [progress]);
 
   return (
     <div
