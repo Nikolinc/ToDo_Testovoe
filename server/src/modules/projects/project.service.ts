@@ -21,6 +21,7 @@ export class ProjectService {
       ...projectDTO,
     });
     createdUser.CreateDate = new Date();
+    createdUser.Update = new Date();
     return createdUser.save();
   }
 
@@ -31,6 +32,7 @@ export class ProjectService {
   }): Promise<Project> {
     const project = await this.ProjectModel.findById(req.id);
     project[req.params] = req.value;
+    project.Update = new Date();
     return project.save();
   }
 
@@ -40,7 +42,7 @@ export class ProjectService {
       `project/${params}`,
       imageFile,
     );
-
+    project.Update = new Date();
     project[params] = imagePath;
     project.save();
     return project;

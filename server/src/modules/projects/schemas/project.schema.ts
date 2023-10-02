@@ -25,6 +25,9 @@ export class Project {
 
   @Prop()
   CreateDate: Date;
+
+  @Prop()
+  Update: Date;
 }
 
 export const ProjectSchema = SchemaFactory.createForClass(Project);
