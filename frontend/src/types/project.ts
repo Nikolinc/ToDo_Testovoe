@@ -7,10 +7,11 @@ export interface Project {
   file: string;
   DueDate: Date;
   CreateDate: Date;
+  Update:Date;
 }
 
 export interface ProjectsState {
-  projects: Project[];
+  project: Project[];
   loading: boolean;
   error: null | string;
 }
@@ -44,7 +45,11 @@ export interface ProjectsFailurePayload {
   error: string;
 }
 
-export type ProjectsSuccess = {
+export interface ProjectRequest{
+  type: typeof ProjectActionTypes.PROJECT_REQUEST
+}
+
+export  type ProjectsSuccess = {
   type: typeof ProjectActionTypes.PROJECT_SUCCESS;
   payload: ProjectsSuccessPayLoad;
 };
