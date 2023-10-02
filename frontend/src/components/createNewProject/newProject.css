@@ -1,0 +1,69 @@
+.newProject {
+  height: 25rem;
+}
+
+.newProject>h2 {
+  margin-top: 1rem;
+}
+
+.newProject>* {
+  margin-bottom: 1.5rem;
+}
+
+.newProject>input,
+textarea {
+  width: 16rem;
+  height: 2rem;
+  background-color: var(--bg);
+  border: none;
+  border-radius: 5px;
+
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+textarea[id=description] {
+  height: 12rem;
+}
+
+
+
+.ButtonBar>button {
+  width: 5.25rem;
+  height: 1.5rem;
+  margin: 0 1rem;
+
+
+  border-radius: 5px;
+
+
+  text-align: center;
+  font-family: Inter;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.save {
+  background-color: var(--secondary);
+  color: var(--bg-component);
+  border: none;
+}
+
+.save:hover {
+  background: none;
+  color: var(--secondary);
+  border: 1px solid var(--secondary);
+}
+
+
+.cancel {
+  background: none;
+  color: var(--tertiary);
+  border: 1px solid var(--tertiary);
+}
+
+.cancel:hover {
+  background-color: var(--tertiary);
+  color: var(--bg-component);
+  border: none;
+}
