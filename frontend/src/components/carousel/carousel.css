@@ -1,0 +1,46 @@
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.carousel {
+  width: 100%;
+}
+
+.container-carousel {
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: start;
+  gap: 2rem;
+  width: 70rem;
+
+  overflow: hidden;
+  scroll-behavior: smooth;
+}
+
+.item .list {
+  width: 15rem;
+  background: #d9d9d9;
+}
+
+.carousel>button {
+  color: var(--secondary);
+  position: absolute;
+  background: none;
+  border: none;
+
+  font-size: 50px;
+  font-weight: 700;
+}
+
+.next {
+  left: 100%;
+  right: 1%;
+}
+
+.pref {
+  z-index: 1;
+  left: 1%;
+  right: 100%;
+}
