@@ -2,21 +2,14 @@ import axios from "axios";
 import { all, call, put, takeLatest } from "redux-saga/effects";
 import { Project, ProjectActionTypes, ProjectsFailure, ProjectsFailurePayload, ProjectsSuccess, ProjectsSuccessPayLoad } from "types/project";
 
-const instance = axios.create({
-  baseURL: `http://localhost:7700/project/all`,
-});
 
-export async function request<Done>(config: any): Promise<Done> {
-  return instance(config).then((response) => response.data);
+const getProject = async () =>{
+  return (await axios.get("http://localhost:7700/project/all")).data
 }
 
-const getProject = async () => {
-  const answer = await request({
-    method: "get",
-    headers: {},
-  });
-  return answer;
-};
+const findId = async (payload:{id:string}) =>{
+  return (await axios.get(`http://localhost:7700/project/${payload.id}`)).data
+}
 
 export const projectSuccess = (payload: ProjectsSuccessPayLoad): ProjectsSuccess => ({
   type: ProjectActionTypes.PROJECT_SUCCESS,
@@ -42,7 +35,25 @@ function* projectSaga() {
   }
 }
 
+function* projectSagaById(action:any) {
+  try {
+    const response:{projects:Project[]} = yield call(findId,{id:action.value.id});
+    console.log("response",response)
+    yield put(
+      projectSuccess(
+       response,
+      )
+    );
+  } catch (e: any) {
+    yield put(projectFailure({ error: e.messag }));
+  }
+}
+
+
+
+
 function* projectWatcher() {
+  yield all([takeLatest(ProjectActionTypes.FIND_ID_PROJECT, projectSagaById)]);
   yield all([takeLatest(ProjectActionTypes.PROJECT_REQUEST, projectSaga)]);
 }
 

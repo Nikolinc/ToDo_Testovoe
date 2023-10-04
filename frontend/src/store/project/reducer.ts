@@ -3,7 +3,8 @@ import {
   ProjectActionTypes,
   ProjectsAction,
   ProjectsState,
-  ProjectRequest
+  ProjectRequest,
+  FindIdRequest
 } from "types/project";
 
 const initialState: ProjectsState = {
@@ -31,6 +32,8 @@ export const reducer = (
   switch (action.type) {
     case ProjectActionTypes.PROJECT_REQUEST:
       return { ...state, loading: true };
+    case ProjectActionTypes.FIND_ID_PROJECT:
+      return { ...state, loading: true };
     case ProjectActionTypes.PROJECT_SUCCESS:
       return { ...state, loading: false, project: action.payload };
     case ProjectActionTypes.PROJECT_ERROR:
@@ -40,6 +43,7 @@ export const reducer = (
   }
 };
 
+export const FindId = (payload:{id:string}):FindIdRequest => ({ type: ProjectActionTypes.FIND_ID_PROJECT, payload})
 export const fecthProject = ():ProjectRequest => ({ type: ProjectActionTypes.PROJECT_REQUEST})
 
 export const ProjectSelector = {

@@ -16,27 +16,33 @@ export class ProjectService {
     private fileService: FileService,
   ) {}
 
-  async create(projectDTO: CreateProjectDTO): Promise<Project> {
+  async create(projectDTO: CreateProjectDTO): Promise<Project[]> {
     const createdUser = await this.ProjectModel.create({
       ...projectDTO,
     });
     createdUser.CreateDate = new Date();
     createdUser.Update = new Date();
-    return createdUser.save();
+    createdUser.save();
+    return [createdUser];
   }
 
   async upload(req: {
     id: ObjectId;
     params: string;
     value: string | Date;
-  }): Promise<Project> {
+  }): Promise<Project[]> {
     const project = await this.ProjectModel.findById(req.id);
     project[req.params] = req.value;
     project.Update = new Date();
-    return project.save();
+    project.save();
+    return [project];
   }
 
-  async uploadFile(id: ObjectId, params: string, imageFile): Promise<Project> {
+  async uploadFile(
+    id: ObjectId,
+    params: string,
+    imageFile,
+  ): Promise<Project[]> {
     const project = await this.ProjectModel.findById(id);
     const imagePath = this.fileService.createFile(
       `project/${params}`,
@@ -45,15 +51,16 @@ export class ProjectService {
     project.Update = new Date();
     project[params] = imagePath;
     project.save();
-    return project;
+    return [project];
   }
 
   async findAll(): Promise<Project[]> {
     return this.ProjectModel.find().exec();
   }
 
-  async findById(id: string): Promise<Project> {
-    return this.ProjectModel.findById(id);
+  async findById(id: string): Promise<Project[]> {
+    const project = await this.ProjectModel.findById(id);
+    return [project];
   }
 
   async delete(id: ObjectId): Promise<any> {

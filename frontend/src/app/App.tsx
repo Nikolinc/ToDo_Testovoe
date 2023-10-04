@@ -8,7 +8,7 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/tasks" element={<Tasks />} />
+        <Route path="/tasks/:id" element={<Tasks />} />
         <Route path="/project" element={<Project />} />
         <Route index element={<Project />} />
       </Routes>
