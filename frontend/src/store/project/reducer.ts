@@ -4,7 +4,7 @@ import {
   ProjectsAction,
   ProjectsState,
   ProjectRequest,
-  FindIdRequest
+  FindIdRequest,
 } from "types/project";
 
 const initialState: ProjectsState = {
@@ -18,7 +18,7 @@ const initialState: ProjectsState = {
       file: "-",
       DueDate: new Date(),
       CreateDate: new Date(),
-      Update: new Date(), 
+      Update: new Date(),
     },
   ],
   loading: false,
@@ -43,8 +43,12 @@ export const reducer = (
   }
 };
 
-export const FindId = (payload:{id:string}):FindIdRequest => ({ type: ProjectActionTypes.FIND_ID_PROJECT, payload})
-export const fecthProject = ():ProjectRequest => ({ type: ProjectActionTypes.PROJECT_REQUEST})
+export const FindId = (): FindIdRequest => ({
+  type: ProjectActionTypes.FIND_ID_PROJECT,
+});
+export const fecthProject = (): ProjectRequest => ({
+  type: ProjectActionTypes.PROJECT_REQUEST,
+});
 
 export const ProjectSelector = {
   getProject: (state: RootState) => state.project.project,

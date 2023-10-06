@@ -58,7 +58,6 @@ export interface ProjectRequest{
 
 export interface FindIdRequest{
   type: typeof ProjectActionTypes.FIND_ID_PROJECT
-  payload: any
 }
 
 export  type ProjectsSuccess = {

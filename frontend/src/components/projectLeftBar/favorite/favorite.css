@@ -1,0 +1,15 @@
+.favorite{
+  background: none;
+  border: none;
+}
+
+.favorite svg{
+  stroke:var(--text) ;
+  stroke-width:5rem;
+  fill:none;
+}
+  
+.favorite> svg:hover{
+  stroke:var( --tertiary);
+  fill:var( --tertiary);
+}

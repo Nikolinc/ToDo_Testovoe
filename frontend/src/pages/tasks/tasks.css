@@ -1,0 +1,4 @@
+.tasks-page{
+  display: grid;
+  grid-template-columns: 30rem auto;
+}
