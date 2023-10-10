@@ -6,6 +6,7 @@ import * as path from 'path';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { ConfigModule } from '@nestjs/config';
 import { ProjectModule } from './modules/projects/project.module';
+import { TaskModule } from './modules/tasks/task.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { ProjectModule } from './modules/projects/project.module';
     UserModule,
     ProjectModule,
     FileModule,
+    TaskModule,
   ],
 })
 export class AppModule {}
