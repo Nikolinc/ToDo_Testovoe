@@ -43,8 +43,9 @@ export const reducer = (
   }
 };
 
-export const FindId = (): FindIdRequest => ({
+export const FindId = (args: { id: string }): FindIdRequest => ({
   type: ProjectActionTypes.FIND_ID_PROJECT,
+  payload: args,
 });
 export const fecthProject = (): ProjectRequest => ({
   type: ProjectActionTypes.PROJECT_REQUEST,

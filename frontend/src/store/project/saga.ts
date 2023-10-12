@@ -13,10 +13,8 @@ const getProject = async () => {
   return (await axios.get("http://localhost:7700/project/all")).data;
 };
 
-const findId = async () => {
-  return (
-    await axios.get(`http://localhost:7700/project/6518743caa5bdefd82992ad5`)
-  ).data;
+const findId = async (args: { id: string }) => {
+  return (await axios.get(`http://localhost:7700/project/${args.id}`)).data;
 };
 
 export const projectSuccess = (
@@ -36,7 +34,6 @@ export const projectFailure = (
 function* projectSaga() {
   try {
     const response: { projects: Project[] } = yield call(getProject);
-    console.log("response", response);
     yield put(projectSuccess(response));
   } catch (e: any) {
     yield put(projectFailure({ error: e.messag }));
@@ -45,8 +42,10 @@ function* projectSaga() {
 
 function* projectSagaById(action: any) {
   try {
-    const response: { projects: Project[] } = yield call(findId);
-    console.log("response", response);
+    const response: { projects: Project[] } = yield call(
+      findId,
+      action.payload
+    );
     yield put(projectSuccess(response));
   } catch (e: any) {
     yield put(projectFailure({ error: e.messag }));
