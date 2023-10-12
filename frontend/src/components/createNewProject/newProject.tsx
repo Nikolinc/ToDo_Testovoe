@@ -21,7 +21,7 @@ export default function NewProject() {
     </h2>
     <input type="title" id="title" placeholder="Title..." value={title} 
     onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setTitle(e.target.value) }} />
-    <textarea id="description" placeholder="Description..." value={description} 
+    <textarea placeholder="Description..." value={description} 
     onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => { setDescription(e.target.value) }} />
     <div className="ButtonBar">
       <button className="save" onClick={() => onSave()}>SAVE</button>
