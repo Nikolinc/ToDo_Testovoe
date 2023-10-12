@@ -5,12 +5,18 @@ import Dashboard from "components/dashboard/dashboard";
 import NewProject from "components/createNewProject/newProject";
 import { useSearchParams } from "react-router-dom";
 import ProjectList from "components/projectList/projectlist";
+import NavBar from "components/navbar/navbar";
+import { IProject } from "types/project";
 
 export default function Project() {
   const [searchParams, setSearchParams] = useSearchParams({ q: "" });
   const q = searchParams.get("q") || "";
 
 
+  function Search(project: IProject) {
+    // eslint-disable-next-line eqeqeq
+    return project.title.toUpperCase().indexOf(q.toUpperCase()) !== -1 || project.description.toUpperCase().indexOf(q.toUpperCase()) !== -1
+  }
 
   return (
     <div className="projects-page">
@@ -20,20 +26,8 @@ export default function Project() {
         <NewProject />
       </div>
       <div className="project ">
-        <input
-          className="clearNone"
-          type="search"
-          id="search"
-          placeholder="Search..."
-          value={q}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-            setSearchParams((prev) => {
-              prev.set("q", e.target.value);
-              return prev;
-            });
-          }}
-        />
-        <ProjectList q={q} />
+        <NavBar />
+        <ProjectList filter={Search} />
       </div>
     </div>
   );

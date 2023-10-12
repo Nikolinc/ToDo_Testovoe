@@ -8,28 +8,6 @@
   margin: 2.5rem;
   padding: 0.5rem 0;
 }
-
-#search {
-
-  width: 50%;
-  height: 2rem;
-  margin: 2.5rem;
-  margin-left: 10rem;
-  padding-left: 1rem;
-  background-color: var(--bg-component);
-  border: none;
-  border-radius: 15px;
-
-  font-size: 1rem;
-  font-weight: 800;
-}
-
-[type="search"]::-webkit-search-cancel-button,
-[type="search"]::-webkit-search-decoration {
-  -webkit-appearance: none;
-  appearance: none;
-}
-
 .project>* {
   filter: drop-shadow(0 10px 8px rgb(0 0 0 / 0.04)) drop-shadow(0 4px 3px rgb(0 0 0 / 0.1));
 }
