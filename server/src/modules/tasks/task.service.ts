@@ -1,10 +1,9 @@
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model, ObjectId, Date, Schema } from 'mongoose';
 import { FileService } from 'src/shared/file/file.service';
-import { Task } from './schemas/task.schema';
+import { Priority, Status, Task } from './schemas/task.schema';
 import { CreateTaskDTO } from './dto/create-task.dto';
-import { Project } from '../projects/schemas/project.schema';
 
 @Injectable()
 export class TaskService {
@@ -17,8 +16,10 @@ export class TaskService {
     const createdTask = await this.TaskModel.create({
       ...taskDTO,
     });
-    createdTask.CreateDate = new Date(taskDTO.CreateDate);
+    createdTask.createDate = new Date(taskDTO.CreateDate);
     createdTask.expirationDate = new Date(taskDTO.expirationDate);
+    createdTask.currentStatus = Status.Queue;
+    if (!createdTask.priority) createdTask.priority = Priority.Low;
     createdTask.save();
     return [createdTask];
   }
@@ -31,7 +32,8 @@ export class TaskService {
     const task = await this.TaskModel.findById(req.id);
     task[req.params] = req.value;
     task.save();
-    return [task];
+    const project = task.project;
+    return await this.TaskModel.find({ project }).exec();
   }
 
   async uploadFile(id: ObjectId, params: string, imageFile): Promise<Task[]> {
@@ -61,7 +63,7 @@ export class TaskService {
 
   async delete(id: ObjectId): Promise<any> {
     const task = await this.TaskModel.findById(id);
-    this.fileService.remoweFile(task.File);
+    this.fileService.remoweFile(task.file);
     return (await task.deleteOne())._id;
   }
 }
