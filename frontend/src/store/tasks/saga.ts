@@ -9,21 +9,18 @@ import {
   TaskSuccessPayLoad,
 } from "types/tasks";
 
-const instance = axios.create({
-  baseURL: `https://jsonplaceholder.typicode.com/users?_limit=10`,
-});
+const getTask = async (args: { id: string }) => {
+  return (await axios.get(`http://localhost:7700/task/project/${args.id}`))
+    .data;
+};
 
-export async function request<Done>(config: any): Promise<Done> {
-  return instance(config).then((response) => response.data);
-}
-
-const getTask = async () => {
-  const answer = await request({
-    method: "get",
-    headers: {},
-  });
-  console.log("tasks", answer);
-  return answer;
+const upload = async (args: {
+  id: string;
+  params: string;
+  value: string | Date;
+}) => {
+  console.log("args", args);
+  return (await axios.post(`http://localhost:7700/task/upload`, args)).data;
 };
 
 export const taskSuccess = (payload: TaskSuccessPayLoad): TaskSuccess => ({
@@ -38,13 +35,17 @@ export const taskFailure = (payload: TaskFailurePayload): TaskFailure => ({
 
 function* taskSaga(action: any) {
   try {
-    const response: { tasks: Task[] } = yield call(getTask);
+    const response: { task: Task[] } = yield call(getTask, action.payload);
+    yield put(taskSuccess(response));
+  } catch (e: any) {
+    yield put(taskFailure({ error: e.messag }));
+  }
+}
 
-    yield put(
-      taskSuccess({
-        task: response.tasks,
-      })
-    );
+function* uploadTaskSaga(action: any) {
+  try {
+    const response: { task: Task[] } = yield call(upload, action.payload);
+    yield put(taskSuccess(response));
   } catch (e: any) {
     yield put(taskFailure({ error: e.messag }));
   }
@@ -52,6 +53,7 @@ function* taskSaga(action: any) {
 
 function* taskWatcher() {
   yield all([takeLatest(TaskActionTypes.TASKS_REQUEST, taskSaga)]);
+  yield all([takeLatest(TaskActionTypes.TASKS_UPLOAD, uploadTaskSaga)]);
 }
 
 export default taskWatcher;
