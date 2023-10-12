@@ -19,6 +19,7 @@ const initialState: ProjectsState = {
       DueDate: new Date(),
       CreateDate: new Date(),
       Update: new Date(),
+      favorit: false,
     },
   ],
   loading: false,

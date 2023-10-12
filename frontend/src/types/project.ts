@@ -7,7 +7,8 @@ export interface IProject {
   file: string;
   DueDate: Date;
   CreateDate: Date;
-  Update:Date;
+  Update: Date;
+  favorit: boolean;
 }
 
 export interface ProjectsState {
@@ -30,7 +31,7 @@ interface ProjectRequestAction {
 
 interface findIdAction {
   type: ProjectActionTypes.FIND_ID_PROJECT;
-  payload: any
+  payload: any;
 }
 interface ProjectSuccessAction {
   type: ProjectActionTypes.PROJECT_SUCCESS;
@@ -48,13 +49,13 @@ export interface ProjectsFailurePayload {
   error: string;
 }
 
-export interface ProjectRequest{
-  type: typeof ProjectActionTypes.PROJECT_REQUEST
+export interface ProjectRequest {
+  type: typeof ProjectActionTypes.PROJECT_REQUEST;
 }
 
-export interface FindIdRequest{
-  type: typeof ProjectActionTypes.FIND_ID_PROJECT
-  payload:{id:string}
+export interface FindIdRequest {
+  type: typeof ProjectActionTypes.FIND_ID_PROJECT;
+  payload: { id: string };
 }
 
 export type ProjectsSuccess = {
@@ -71,4 +72,4 @@ export type ProjectsAction =
   | ProjectRequestAction
   | ProjectSuccessAction
   | ProjectErrorAction
-  | findIdAction
+  | findIdAction;
