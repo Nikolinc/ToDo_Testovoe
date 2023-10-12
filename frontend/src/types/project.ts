@@ -32,18 +32,14 @@ interface findIdAction {
   type: ProjectActionTypes.FIND_ID_PROJECT;
   payload: any
 }
-
-
 interface ProjectSuccessAction {
   type: ProjectActionTypes.PROJECT_SUCCESS;
   payload: Project[];
 }
-
 interface ProjectErrorAction {
   type: ProjectActionTypes.PROJECT_ERROR;
   payload: string;
 }
-
 export interface ProjectsSuccessPayLoad {
   projects: Project[];
 }
@@ -58,9 +54,10 @@ export interface ProjectRequest{
 
 export interface FindIdRequest{
   type: typeof ProjectActionTypes.FIND_ID_PROJECT
+  payload:{id:string}
 }
 
-export  type ProjectsSuccess = {
+export type ProjectsSuccess = {
   type: typeof ProjectActionTypes.PROJECT_SUCCESS;
   payload: ProjectsSuccessPayLoad;
 };
