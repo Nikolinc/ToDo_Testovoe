@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { FindId, ProjectSelector } from "store/project/reducer";
-import { Project } from "types/project";
+import { IProject } from "types/project";
 import Favorite from "./favorite/favorite";
 import { ReactComponent as Calendar } from "assets/calendar.svg";
 import { ReactComponent as UserGroup } from "assets/user_group.svg";
@@ -13,7 +13,7 @@ import AddFile from "./addFile/addFile";
 function ProjectLeftBar() {
   const params = useParams();
   const dispatch = useDispatch();
-  const project: Project[] = useSelector(ProjectSelector.getProject);
+  const project: IProject[] = useSelector(ProjectSelector.getProject);
 
   const CreateDate = new Date(project[0].CreateDate).toUTCString();
 
