@@ -1,0 +1,68 @@
+
+.navbar{
+  display: flex;
+  align-items: center;
+  margin-left: 8%;
+}
+
+#search {
+  width: 50%;
+  height: 2rem;
+  margin: 2.5rem;
+  padding-left: 1rem;
+  background-color: var(--bg-component); 
+  background-image: url("../../assets/search.svg");
+  background-repeat: no-repeat;
+  background-position:98% 3px;
+  border: none;
+  border-radius: 15px;
+  font-size: 1rem;
+  font-weight: 800;
+  filter: drop-shadow(0 10px 8px rgb(0 0 0 / 0.04)) drop-shadow(0 4px 3px rgb(0 0 0 / 0.1));
+}
+
+[type="search"]::-webkit-search-cancel-button,
+[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.filter{
+  display: flex;
+  align-items:center;
+  gap: 0.5rem;
+  border: 2px solid var(--secondary);
+  border-radius: 10px;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color:var(--secondary);
+  padding: 0.2rem 1rem ;
+}
+
+.filter:hover , .filter:focus{
+  background-color:var(--secondary) ;
+  color: var(--bg-component);
+}
+
+.filter:hover > svg, .filter:focus >svg {
+  fill: var(--bg-component);
+}
+
+.new-task{
+  display: flex;
+  align-items:center;
+  gap: 0.5rem;
+  border: 2px solid var(--secondary);
+  border-radius: 10px;
+  font-size: 1.25rem;
+  font-weight: 500;
+  background-color:var(--secondary);
+  color: var(--bg-component);
+  margin-left: 1rem;
+  padding: 0.2rem 0.5rem ;
+}
+
+.new-task:hover , .new-task:focus{
+  background:none ;
+  color: var(--secondary);
+}
