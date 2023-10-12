@@ -1,4 +1,4 @@
-export interface Project {
+export interface IProject {
   _id: string;
   title: string;
   description: string;
@@ -11,7 +11,7 @@ export interface Project {
 }
 
 export interface ProjectsState {
-  project: Project[];
+  project: IProject[];
   loading: boolean;
   error: null | string;
 }
@@ -34,14 +34,14 @@ interface findIdAction {
 }
 interface ProjectSuccessAction {
   type: ProjectActionTypes.PROJECT_SUCCESS;
-  payload: Project[];
+  payload: IProject[];
 }
 interface ProjectErrorAction {
   type: ProjectActionTypes.PROJECT_ERROR;
   payload: string;
 }
 export interface ProjectsSuccessPayLoad {
-  projects: Project[];
+  projects: IProject[];
 }
 
 export interface ProjectsFailurePayload {

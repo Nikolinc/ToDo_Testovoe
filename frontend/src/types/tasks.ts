@@ -1,4 +1,4 @@
-export interface Task {
+export interface ITask {
   _id: string;
   title: string;
   description: string;
@@ -26,7 +26,7 @@ export enum Status {
 }
 
 export interface TaskState {
-  tasks: Task[];
+  tasks: ITask[];
   loading: boolean;
   error: null | string;
 }
@@ -49,7 +49,7 @@ interface TaskUploadAction {
 
 interface TaskSuccessAction {
   type: TaskActionTypes.TASKS_SUCCESS;
-  payload: Task[];
+  payload: ITask[];
 }
 
 interface TaskErrorAction {
@@ -58,7 +58,7 @@ interface TaskErrorAction {
 }
 
 export interface TaskSuccessPayLoad {
-  task: Task[];
+  task: ITask[];
 }
 
 export interface TaskFailurePayload {
