@@ -4,11 +4,17 @@ import { Project } from 'src/modules/projects/schemas/project.schema';
 
 export type TaskDocument = HydratedDocument<Task>;
 
-enum Priority {
+export enum Priority {
   Critical = 'Critical',
   High = 'High',
   Medium = 'Medium',
   Low = 'Low',
+}
+
+export enum Status {
+  Queue = 'Queue',
+  Development = 'Development',
+  Done = 'Done',
 }
 
 @Schema()
@@ -20,7 +26,7 @@ export class Task {
   description: string;
 
   @Prop()
-  CreateDate: Date;
+  createDate: Date;
 
   @Prop()
   timeAtWork: string;
@@ -29,16 +35,16 @@ export class Task {
   expirationDate: Date;
 
   @Prop()
-  Priority: Priority;
+  priority: Priority;
 
   @Prop()
-  File: string;
+  file: string;
 
   @Prop()
-  CurrentStatus: string;
+  currentStatus: Status;
 
   @Prop()
-  Coments: string;
+  coments: string;
 
   @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Project' })
   project: Project;
