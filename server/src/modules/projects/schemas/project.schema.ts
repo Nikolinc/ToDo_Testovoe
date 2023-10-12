@@ -28,6 +28,9 @@ export class Project {
 
   @Prop()
   Update: Date;
+
+  @Prop()
+  favorit: boolean;
 }
 
 export const ProjectSchema = SchemaFactory.createForClass(Project);
