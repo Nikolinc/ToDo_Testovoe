@@ -1,0 +1,63 @@
+.taskList{
+  display: grid;
+  grid-template-columns: 26% 26% 26%;
+  gap: 3rem ;
+  margin: 1rem 7rem ;
+}
+
+.taskList > div {
+  width: 100%;
+  height: 75vh;
+  background-color: var(--bg-component);
+  border-radius: 15px;
+  filter: drop-shadow(0 10px 8px rgb(0 0 0 / 0.04)) drop-shadow(0 4px 3px rgb(0 0 0 / 0.1));
+
+}
+
+.taskList > div > h2{
+  text-align: center;
+  padding: 1rem;
+  border-radius: 15px 15px 0  0;
+}
+.Queue > h2{
+  background-color: var(--secondary);
+  color: var(--bg-component);
+}
+.Development > h2{
+  background-color: var(--dev);
+}
+.Done > h2{
+  background-color: var(--done);
+}
+
+.openTask{
+  width: 100%;
+  height: 20%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: none;
+  border: none;
+}
+
+.task{
+  width: 90%;
+  height: 80%;
+
+  padding-top: 0.5rem ;
+  border-radius: 10px;
+  color:var(--text);
+
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.task:hover{
+  cursor: grab;
+  transform: scale(1.05);
+}
+
+.task:active{
+  cursor: grabbing;
+}

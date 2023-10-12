@@ -1,0 +1,36 @@
+
+.task > *{
+  margin-top: 0.2rem;
+}
+
+.date{
+  display: flex;
+  align-items: center;
+  padding-left: 1rem;
+  margin:none;
+}
+
+.date>h4{
+  padding: 0 0.5rem;
+}
+
+.description{
+  padding:0.5rem 1rem;
+  text-align: start;
+}
+
+.badge{
+  width: 3rem;
+  height: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-left: 1rem;
+  margin-bottom:none;
+  border-radius: 10px;
+  background:none;
+  color: var(--text);
+  border:1px solid var(--text)
+
+}
