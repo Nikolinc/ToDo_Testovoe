@@ -1,14 +1,14 @@
-import { useEffect} from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { FindId, ProjectSelector } from "store/project/reducer";
 import { Project } from "types/project";
 import Favorite from "./favorite/favorite";
-import { ReactComponent as File } from "assets/file.svg";
 import { ReactComponent as Calendar } from "assets/calendar.svg";
 import { ReactComponent as UserGroup } from "assets/user_group.svg";
-import { ReactComponent as Trash } from "assets/trash.svg";
 import "./projectLeftBar.css";
+import DeliteProject from "./delite/deliteProject";
+import AddFile from "./addFile/addFile";
 
 function ProjectLeftBar() {
   const params = useParams();
@@ -19,10 +19,10 @@ function ProjectLeftBar() {
 
   useEffect(() => {
     const payload = { id: params.id || "" };
-    dispatch(FindId());
+    dispatch(FindId(payload));
   }, []);
 
-  const changeDescription = (e: React.ChangeEvent<HTMLTextAreaElement>) => {};
+  const changeDescription = (e: React.ChangeEvent<HTMLTextAreaElement>) => { };
 
   return (
     <div>
@@ -41,10 +41,7 @@ function ProjectLeftBar() {
             }}
           />
 
-          <button>
-            <File />
-            Add Files
-          </button>
+          <AddFile />
           <button>
             <Calendar />
             Add Due Date
@@ -57,7 +54,7 @@ function ProjectLeftBar() {
       </div>
       <div className="footer-project-left-bar">
         <h4>Create {CreateDate}</h4>
-        <Trash />
+        <DeliteProject />
       </div>
     </div>
   );

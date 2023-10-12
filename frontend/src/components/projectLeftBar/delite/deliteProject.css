@@ -1,0 +1,73 @@
+.delite{
+  display: flex;
+  justify-content: center;
+  background:none;
+  border: none;
+}
+
+.delite > svg >  {
+  fill:var(--text);
+}
+  
+.delite> svg:hover{
+  fill:var( --tertiary);
+}
+
+.modalDisclaimer{
+  position: absolute;
+  top: 25%;
+  left: 45%;
+  width: 20rem;
+  padding: 2rem 10rem;
+  z-index:1000;
+  transform: 'translate(-50%, -50%)';
+  background-color: var(--bg-component);
+  border-radius:15px;
+}
+
+.modalDisclaimer > p{
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+.buttonBar{
+  display: flex;
+  justify-content: center;
+  gap: 1rem ;
+  margin-top: 1rem; 
+}
+
+.buttonBar>button{
+  padding: 0.5rem 1rem ;
+
+  background: none;
+  border: none;
+  border-radius: 5px;
+ 
+  font-size: 1rem ;
+  font-weight: 500;
+}
+
+.buttonBar>.delite-modal {
+  background-color: var(--tertiary);
+  color: var(--bg-component);
+  border: none;
+}
+
+.buttonBar>.delite-modal:hover {
+  background: none;
+  color:  var(--tertiary);
+  border: 1px solid  var(--tertiary);
+}
+
+
+.buttonBar>.cancel {
+  background: none;
+  color: var(--text);
+  border: 1px solid var(--text);
+}
+
+.buttonBar>.cancel:hover {
+  background-color: var(--text);
+  color: var(--bg-component);
+  border: 1px solid  var(--text);
+}

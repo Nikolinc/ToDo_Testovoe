@@ -13,6 +13,7 @@
   width: 80%;
   margin:0.5rem 2.5rem;
   border-radius: 10px;
+  color: var(--text)
 }
 
 .project-info> h2 {
@@ -35,7 +36,10 @@
   font-size: 1.2rem;
   font-weight: 600;
   filter: drop-shadow(0 10px 8px rgb(0 0 0 / 0.04)) drop-shadow(0 4px 3px rgb(0 0 0 / 0.1));
+}
 
+.project-info > button > svg{
+  stroke: var(--text);
 }
 
 #description{
@@ -63,12 +67,4 @@
   font-size: 1em;
   font-weight: 400;
   margin:0 4rem 0 2.5rem;
-}
-
-.footer-project-left-bar > svg >  {
-  fill:var(--text);
-}
-  
-.footer-project-left-bar> svg:hover{
-  fill:var( --secondary);
 }
