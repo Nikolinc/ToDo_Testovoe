@@ -2,3 +2,11 @@
   display: grid;
   grid-template-columns: 30rem auto;
 }
+
+.clearNone{
+  padding-left: 5rem;
+}
+
+ .tasks-page>.clearNone{
+  filter: drop-shadow(0 10px 8px rgb(0 0 0 / 0.04)) drop-shadow(0 4px 3px rgb(0 0 0 / 0.1));
+ }
