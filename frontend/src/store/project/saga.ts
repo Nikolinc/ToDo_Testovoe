@@ -1,7 +1,7 @@
 import axios from "axios";
 import { all, call, put, takeLatest } from "redux-saga/effects";
 import {
-  Project,
+  IProject,
   ProjectActionTypes,
   ProjectsFailure,
   ProjectsFailurePayload,
@@ -33,7 +33,7 @@ export const projectFailure = (
 
 function* projectSaga() {
   try {
-    const response: { projects: Project[] } = yield call(getProject);
+    const response: { projects: IProject[] } = yield call(getProject);
     yield put(projectSuccess(response));
   } catch (e: any) {
     yield put(projectFailure({ error: e.messag }));
@@ -42,7 +42,7 @@ function* projectSaga() {
 
 function* projectSagaById(action: any) {
   try {
-    const response: { projects: Project[] } = yield call(
+    const response: { projects: IProject[] } = yield call(
       findId,
       action.payload
     );

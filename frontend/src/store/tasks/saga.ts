@@ -1,7 +1,7 @@
 import axios from "axios";
 import { all, call, put, takeLatest } from "redux-saga/effects";
 import {
-  Task,
+  ITask,
   TaskActionTypes,
   TaskFailure,
   TaskFailurePayload,
@@ -35,7 +35,7 @@ export const taskFailure = (payload: TaskFailurePayload): TaskFailure => ({
 
 function* taskSaga(action: any) {
   try {
-    const response: { task: Task[] } = yield call(getTask, action.payload);
+    const response: { task: ITask[] } = yield call(getTask, action.payload);
     yield put(taskSuccess(response));
   } catch (e: any) {
     yield put(taskFailure({ error: e.messag }));
@@ -44,7 +44,7 @@ function* taskSaga(action: any) {
 
 function* uploadTaskSaga(action: any) {
   try {
-    const response: { task: Task[] } = yield call(upload, action.payload);
+    const response: { task: ITask[] } = yield call(upload, action.payload);
     yield put(taskSuccess(response));
   } catch (e: any) {
     yield put(taskFailure({ error: e.messag }));
