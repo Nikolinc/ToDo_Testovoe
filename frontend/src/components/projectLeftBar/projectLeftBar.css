@@ -4,9 +4,10 @@
   background-color:var(--bg-component);
 }
 
-.project-left-bar > img {
+.project-left-bar > img,  .project-left-bar > .imageError {
   width: 100%;
   height:25rem;
+  border-radius: 0;
 }
 
 .project-info > * {
