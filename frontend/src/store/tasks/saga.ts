@@ -19,7 +19,6 @@ const upload = async (args: {
   params: string;
   value: string | Date;
 }) => {
-  console.log("args", args);
   return (await axios.post(`http://localhost:7700/task/upload`, args)).data;
 };
 

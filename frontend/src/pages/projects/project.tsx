@@ -18,6 +18,11 @@ export default function Project() {
     return project.title.toUpperCase().indexOf(q.toUpperCase()) !== -1 || project.description.toUpperCase().indexOf(q.toUpperCase()) !== -1
   }
 
+  function FavoritFilter(project: IProject) {
+    // eslint-disable-next-line eqeqeq
+    return project.favorit
+  }
+
   return (
     <div className="projects-page">
       <div className="leftArea">
@@ -27,7 +32,8 @@ export default function Project() {
       </div>
       <div className="project ">
         <NavBar />
-        <ProjectList filter={Search} />
+        <ProjectList title="Active Project" filter={Search} />
+        <ProjectList title="Favorit" filter={FavoritFilter} />
       </div>
     </div>
   );
