@@ -29,7 +29,7 @@ export class ProjectService {
   async upload(req: {
     id: ObjectId;
     params: string;
-    value: string | Date;
+    value: string | Date | boolean;
   }): Promise<Project[]> {
     const project = await this.ProjectModel.findById(req.id);
     project[req.params] = req.value;
