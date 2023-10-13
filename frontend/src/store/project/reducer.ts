@@ -5,6 +5,7 @@ import {
   ProjectsState,
   ProjectRequest,
   FindIdRequest,
+  ProjectUpdateRequest,
 } from "types/project";
 
 const initialState: ProjectsState = {
@@ -35,6 +36,8 @@ export const reducer = (
       return { ...state, loading: true };
     case ProjectActionTypes.FIND_ID_PROJECT:
       return { ...state, loading: true };
+    case ProjectActionTypes.PROJECT_UPDATE:
+      return { ...state, loading: true };
     case ProjectActionTypes.PROJECT_SUCCESS:
       return { ...state, loading: false, project: action.payload };
     case ProjectActionTypes.PROJECT_ERROR:
@@ -44,10 +47,20 @@ export const reducer = (
   }
 };
 
+export const uploadProject = (args: {
+  id: string;
+  params: string;
+  value: string | boolean | Date;
+}): ProjectUpdateRequest => ({
+  type: ProjectActionTypes.PROJECT_UPDATE,
+  payload: args,
+});
+
 export const FindId = (args: { id: string }): FindIdRequest => ({
   type: ProjectActionTypes.FIND_ID_PROJECT,
   payload: args,
 });
+
 export const fecthProject = (): ProjectRequest => ({
   type: ProjectActionTypes.PROJECT_REQUEST,
 });

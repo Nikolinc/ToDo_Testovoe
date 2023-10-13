@@ -22,13 +22,17 @@ export enum ProjectActionTypes {
   PROJECT_SUCCESS = "PROJECT_SUCCESS",
   PROJECT_ERROR = "PROJECT_ERROR",
   FIND_ID_PROJECT = "FIND_ID_PROJECT",
+  PROJECT_UPDATE = "PROJECT_UPDATE",
   SET_PROJECT = "SET_PROJECT",
 }
 
 interface ProjectRequestAction {
   type: ProjectActionTypes.PROJECT_REQUEST;
 }
-
+interface ProjectUpdateAction {
+  type: ProjectActionTypes.PROJECT_UPDATE;
+  payload: any;
+}
 interface findIdAction {
   type: ProjectActionTypes.FIND_ID_PROJECT;
   payload: any;
@@ -58,6 +62,11 @@ export interface FindIdRequest {
   payload: { id: string };
 }
 
+export interface ProjectUpdateRequest {
+  type: typeof ProjectActionTypes.PROJECT_UPDATE;
+  payload: { id: string; params: string; value: string | Date | boolean };
+}
+
 export type ProjectsSuccess = {
   type: typeof ProjectActionTypes.PROJECT_SUCCESS;
   payload: ProjectsSuccessPayLoad;
@@ -72,4 +81,5 @@ export type ProjectsAction =
   | ProjectRequestAction
   | ProjectSuccessAction
   | ProjectErrorAction
+  | ProjectUpdateAction
   | findIdAction;
