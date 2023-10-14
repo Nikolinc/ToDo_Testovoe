@@ -16,14 +16,14 @@ export class ProjectService {
     private fileService: FileService,
   ) {}
 
-  async create(projectDTO: CreateProjectDTO): Promise<Project[]> {
+  async create(projectDTO: CreateProjectDTO): Promise<Project> {
     const createdUser = await this.ProjectModel.create({
       ...projectDTO,
     });
     createdUser.CreateDate = new Date();
     createdUser.Update = new Date();
     createdUser.save();
-    return [createdUser];
+    return createdUser;
   }
 
   async upload(req: {
@@ -65,7 +65,10 @@ export class ProjectService {
 
   async delete(id: ObjectId): Promise<any> {
     const project = await this.ProjectModel.findById(id);
-    this.fileService.remoweFile(project.image);
+    try {
+      if (project.image) this.fileService.remoweFile(project.image);
+      if (project.file) this.fileService.remoweFile(project.file);
+    } catch {}
     return (await project.deleteOne())._id;
   }
 }

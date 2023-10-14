@@ -7,7 +7,7 @@ import Favorite from "./favorite/favorite";
 import { ReactComponent as Calendar } from "assets/calendar.svg";
 import { ReactComponent as UserGroup } from "assets/user_group.svg";
 import "./projectLeftBar.css";
-import DeliteProject from "./delite/deliteProject";
+import DeleteProject from "./delete/deleteProject";
 import AddFile from "./addFile/addFile";
 
 function ProjectLeftBar() {
@@ -22,15 +22,22 @@ function ProjectLeftBar() {
     dispatch(FindId(payload));
   }, []);
 
-  const changeDescription = (e: React.ChangeEvent<HTMLTextAreaElement>) => { };
+  const changeDescription = (e: React.ChangeEvent<HTMLTextAreaElement>) => {};
 
   return (
     <div>
       <div className="project-left-bar">
-        {image ? <div className="imageError flex-center">
-          {project[0].title.replace(/\s/g, '')[0]}
-        </div> :
-          <img src={`http://localhost:7700/${project[0].image}`} alt="" onError={() => setImage(true)} />}
+        {image ? (
+          <div className="imageError flex-center">
+            {project[0].title.replace(/\s/g, "").toUpperCase()[0]}
+          </div>
+        ) : (
+          <img
+            src={`http://localhost:7700/${project[0].image}`}
+            alt=""
+            onError={() => setImage(true)}
+          />
+        )}
 
         <div className="project-info">
           <h2>
@@ -58,11 +65,10 @@ function ProjectLeftBar() {
       </div>
       <div className="footer-project-left-bar">
         <h4>Create {CreateDate}</h4>
-        <DeliteProject />
+        <DeleteProject />
       </div>
     </div>
   );
 }
-
 
 export default ProjectLeftBar;
