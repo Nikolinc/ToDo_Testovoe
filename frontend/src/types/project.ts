@@ -23,7 +23,6 @@ export enum ProjectActionTypes {
   PROJECT_ERROR = "PROJECT_ERROR",
   FIND_ID_PROJECT = "FIND_ID_PROJECT",
   PROJECT_UPDATE = "PROJECT_UPDATE",
-  SET_PROJECT = "SET_PROJECT",
 }
 
 interface ProjectRequestAction {
