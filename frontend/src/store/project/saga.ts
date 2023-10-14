@@ -31,8 +31,15 @@ const findId = async (args: { id: string }) => {
   return (await axios.get(`http://localhost:7700/project/${args.id}`)).data;
 };
 
-export const addproject = async (args: { title: string; description: string }) => {
+export const addproject = async (args: {
+  title: string;
+  description: string;
+}) => {
   return (await axios.post(`http://localhost:7700/project/create`, args)).data;
+};
+
+export const deleteProject = async (args: { id: string }) => {
+  return (await axios.delete(`http://localhost:7700/project/${args.id}`)).data;
 };
 
 const upload = async (args: {
