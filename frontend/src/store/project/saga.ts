@@ -42,12 +42,17 @@ export const deleteProject = async (args: { id: string }) => {
   return (await axios.delete(`http://localhost:7700/project/${args.id}`)).data;
 };
 
-const upload = async (args: {
+export const upload = async (args: {
   id: string;
   params: string;
-  value: string | Date | boolean;
+  value: string | Date;
 }) => {
   return (await axios.post(`http://localhost:7700/project/upload`, args)).data;
+};
+
+export const uploadFile = async (args: any) => {
+  return (await axios.post(`http://localhost:7700/project/uploadFile`, args))
+    .data;
 };
 
 function* projectSaga() {
