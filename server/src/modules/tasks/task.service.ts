@@ -16,12 +16,13 @@ export class TaskService {
     const createdTask = await this.TaskModel.create({
       ...taskDTO,
     });
-    createdTask.createDate = new Date(taskDTO.CreateDate);
+    createdTask.createDate = new Date(taskDTO.createDate);
     createdTask.expirationDate = new Date(taskDTO.expirationDate);
     createdTask.currentStatus = Status.Queue;
     if (!createdTask.priority) createdTask.priority = Priority.Low;
     createdTask.save();
-    return [createdTask];
+    const project = createdTask.project;
+    return await this.TaskModel.find({ project }).exec();
   }
 
   async upload(req: {
