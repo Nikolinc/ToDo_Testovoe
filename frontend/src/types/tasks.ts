@@ -5,21 +5,21 @@ export interface ITask {
   createDate: string;
   timeAtWork: string;
   expirationDate: string;
-  priority: Priority;
+  priority: IPriority;
   file: string;
-  currentStatus: Status;
+  currentStatus: IStatus;
   coments: string;
   project: string;
 }
 
-export enum Priority {
+export enum IPriority {
   Critical = "Critical",
   High = "High",
   Medium = "Medium",
   Low = "Low",
 }
 
-export enum Status {
+export enum IStatus {
   Queue = "Queue",
   Development = "Development",
   Done = "Done",
@@ -37,6 +37,11 @@ export enum TaskActionTypes {
   TASKS_ERROR = "TASKS_ERROR",
   SET_TASKS_REQUEST = "SET_TASKS_REQUEST",
   TASKS_UPLOAD = "TASKS_UPLOAD",
+  TASK_CREATE = "TASK_CREATE",
+}
+
+interface TaskCreatetAction {
+  type: TaskActionTypes.TASK_CREATE;
 }
 
 interface TaskRequestAction {
@@ -70,7 +75,12 @@ export interface TaskRequest {
   payload: { id: string };
 }
 
-export interface TaskUpliadRequest {
+export interface TaskCreateRequest {
+  type: typeof TaskActionTypes.TASK_CREATE;
+  payload: any;
+}
+
+export interface TaskUploadRequest {
   type: typeof TaskActionTypes.TASKS_UPLOAD;
   payload: { id: number; params: string; value: string | Date };
 }
@@ -89,4 +99,5 @@ export type TaskAction =
   | TaskRequestAction
   | TaskSuccessAction
   | TaskErrorAction
-  | TaskUploadAction;
+  | TaskUploadAction
+  | TaskCreatetAction;
