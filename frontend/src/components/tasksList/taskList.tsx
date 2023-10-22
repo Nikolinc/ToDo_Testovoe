@@ -3,7 +3,7 @@ import { useParams, useSearchParams } from 'react-router-dom';
 import './taskList.css'
 import { useDispatch, useSelector } from 'react-redux';
 import { TaskSelector, fecthTasks, uploadTask } from 'store/tasks/reducer';
-import { Status, ITask } from 'types/tasks';
+import { IStatus, ITask } from 'types/tasks';
 import Drop from 'components/tasksList/Drop/Drop';
 import ItemTask from './itemTask/itemTask';
 
@@ -19,7 +19,7 @@ function TaskList() {
   const [searchParams] = useSearchParams({ q: "" });
   const q = searchParams.get("q") || "";
 
-  const filter = (task: ITask, status: Status) => task.currentStatus === status &&
+  const filter = (task: ITask, status: IStatus) => task.currentStatus === status &&
     (task.title.toUpperCase().indexOf(q.toUpperCase()) !== -1 ||
       task.description.toUpperCase().indexOf(q.toUpperCase()) !== -1);
 
@@ -28,7 +28,7 @@ function TaskList() {
     dispatch(fecthTasks(payload));
   }, []);
 
-  const columns = [{ key: 0, title: "Queue", status: Status.Queue }, { key: 1, title: "Development", status: Status.Development }, { key: 2, title: "Done", status: Status.Done }]
+  const columns = [{ key: 0, title: "Queue", status: IStatus.Queue }, { key: 1, title: "Development", status: IStatus.Development }, { key: 2, title: "Done", status: IStatus.Done }]
 
 
   const updateStatus = async (item: any, isOver: boolean, status: string) => {
