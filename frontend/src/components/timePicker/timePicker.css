@@ -1,0 +1,35 @@
+
+.timepicer-area{
+  position: absolute;
+  top: 25%;
+  z-index: 2000;
+
+  display: flex;
+  grid-template-columns: repeat(3, 50%);  
+  place-content: center;
+
+  gap:0.2rem;
+  width: 6rem;
+  padding: 1.5rem;
+  border-radius: 10px;
+  background-color: var(--bg-component);
+}
+
+.timepicer-area >*{
+  width: 3.3rem
+}
+
+.timepicer-area >*>*{
+  
+  height: 30%;
+  width: 60%;
+
+  text-align: center;
+  background: none;
+  border: none;
+
+  color: var(--text);
+  font-size: large;
+  font-weight: 800;
+}
+
