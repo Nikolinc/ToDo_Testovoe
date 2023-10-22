@@ -1,0 +1,104 @@
+
+.calendar-area{
+  position: absolute;
+  top: 25%;
+  z-index: 2000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  height: 15.5rem;
+  width: 15rem;
+  padding: 1.5rem;
+  border-radius: 10px;
+  background-color: var(--bg-component);
+}
+.calendar{
+  height: 100%;
+  width: 100%;
+}
+.months{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.months > h2{
+  user-select: none;
+  font-weight: 600;
+  font-size: 1.3rem;
+}
+
+.months-select{
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.months-select > button, .months-select > h2 {
+  font-size: large;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+.months-select > button:hover, .months-select > h2:hover  {
+	transform: scale(1.05);
+}
+
+.week{
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+}
+
+.week >h2{
+  display: grid;
+  place-content: center;
+  user-select: none;
+  font-size: small;
+  text-align: center;
+  height: 2.5rem;
+  width: 3rem;
+}
+
+.months-grid{
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+}
+
+.day{
+  display: grid;
+  place-content: center;
+  font-size: small;
+  border-top: 1px solid var(--text);
+  padding: 0.5rem;
+  text-align: center;
+  height: 55%;
+}
+.day>button{
+  display: grid;
+  place-content: center;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 100% ;
+  cursor: pointer;
+  user-select: none;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.day>button:hover{
+  background-color: var(--text);
+  color:var(--bg-component)
+}
+
+.currentMonth{
+  color:var(--text-grey);
+}
+.today{
+  background-color: var(--secondary);
+  color:var(--bg-component);
+}
+.selectDate{
+  background-color: var(--text);
+  color:var(--bg-component)
+}
