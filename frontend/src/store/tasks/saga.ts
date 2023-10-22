@@ -22,6 +22,10 @@ const upload = async (args: {
   return (await axios.post(`http://localhost:7700/task/upload`, args)).data;
 };
 
+const create = async (args: any) => {
+  return (await axios.post(`http://localhost:7700/task/create`, args)).data;
+};
+
 export const taskSuccess = (payload: TaskSuccessPayLoad): TaskSuccess => ({
   type: TaskActionTypes.TASKS_SUCCESS,
   payload,
@@ -41,6 +45,15 @@ function* taskSaga(action: any) {
   }
 }
 
+function* createSaga(action: any) {
+  try {
+    const response: { task: ITask[] } = yield call(create, action.payload);
+    yield put(taskSuccess(response));
+  } catch (e: any) {
+    yield put(taskFailure({ error: e.messag }));
+  }
+}
+
 function* uploadTaskSaga(action: any) {
   try {
     const response: { task: ITask[] } = yield call(upload, action.payload);
@@ -51,6 +64,7 @@ function* uploadTaskSaga(action: any) {
 }
 
 function* taskWatcher() {
+  yield all([takeLatest(TaskActionTypes.TASK_CREATE, createSaga)]);
   yield all([takeLatest(TaskActionTypes.TASKS_REQUEST, taskSaga)]);
   yield all([takeLatest(TaskActionTypes.TASKS_UPLOAD, uploadTaskSaga)]);
 }

@@ -3,8 +3,8 @@ import {
   TaskState,
   TaskAction,
   TaskActionTypes,
-  Priority,
-  Status,
+  IPriority,
+  IStatus,
 } from "types/tasks";
 
 const initialState: TaskState = {
@@ -16,9 +16,9 @@ const initialState: TaskState = {
       createDate: "-",
       timeAtWork: "-",
       expirationDate: "-",
-      priority: Priority.Low,
+      priority: IPriority.Low,
       file: "-",
-      currentStatus: Status.Queue,
+      currentStatus: IStatus.Queue,
       coments: "-",
       project: "-",
     },
@@ -47,6 +47,11 @@ export const reducer = (
 
 export const fecthTasks = (args: { id: string }) => ({
   type: TaskActionTypes.TASKS_REQUEST,
+  payload: args,
+});
+
+export const createTask = (args: any) => ({
+  type: TaskActionTypes.TASK_CREATE,
   payload: args,
 });
 
