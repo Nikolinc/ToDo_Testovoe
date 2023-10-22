@@ -2,6 +2,7 @@
   --bg: #D6DAE5;
   --bg-component: #fff;
   --text: #2E2D2D;
+  --text-grey:#9CA3AF;
 
   --secondary: #4D4DA8;
   --tertiary: #9A3939;
@@ -42,6 +43,17 @@
 
 ::-webkit-scrollbar-thumb:hover {
   background-color: var(--text);
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }
 
 
