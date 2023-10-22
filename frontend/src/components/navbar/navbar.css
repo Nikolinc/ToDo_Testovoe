@@ -50,16 +50,3 @@
 .filter:hover > svg, .filter:focus >svg {
   fill: var(--bg-component);
 }
-
-.new-task{
-  border: 2px solid var(--secondary);
-  background-color:var(--secondary);
-  color: var(--bg-component);
-  margin-left: 1rem;
-  padding: 0.2rem 0.5rem ;
-}
-
-.new-task:hover , .new-task:focus{
-  background:none ;
-  color: var(--secondary);
-}

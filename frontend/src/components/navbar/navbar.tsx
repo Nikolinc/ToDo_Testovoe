@@ -2,6 +2,7 @@ import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import { ReactComponent as ArrowBack } from "assets/arrow_back.svg";
 import { ReactComponent as Filter } from "assets/filter.svg";
 import './navbar.css';
+import CreateTask from "components/createNewTask/createNewTask";
 
 function NavBar() {
   const [searchParams, setSearchParams] = useSearchParams({ q: "" });
@@ -31,7 +32,7 @@ function NavBar() {
       }}
     />
     <button className="filter"><p>filter</p> <Filter fill="var(--secondary)" /></button>
-    {taskPage && <button className="new-task"><p>New Task</p></button>
+    {taskPage && <CreateTask />
     }
   </div>
   )
