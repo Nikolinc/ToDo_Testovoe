@@ -1,6 +1,6 @@
 .tasks-page{
   display: grid;
-  grid-template-columns: 30rem auto;
+  grid-template-columns: 30% auto;
 }
 
 .clearNone{
